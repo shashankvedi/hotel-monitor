@@ -2,7 +2,6 @@ name: Hourly Hotel Scraper
 
 on:
   schedule:
-    # Runs at minute 0 of every hour
     - cron: '0 * * * *'
   workflow_dispatch:
 
@@ -21,8 +20,9 @@ jobs:
         with:
           python-version: '3.9'
 
+      # THIS IS THE KEY CHANGE: Installing 'curl_cffi'
       - name: Install libraries
-        run: pip install requests beautifulsoup4
+        run: pip install curl_cffi beautifulsoup4
 
       - name: Run Scraper
         run: python scraper.py
